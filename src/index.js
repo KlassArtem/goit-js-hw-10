@@ -5,13 +5,13 @@ import './css/styles.css';
 
 const DEBOUNCE_DELAY = 300;
 
+const refs = {
+  input: document.getElementById('search-box'),
+  countryList: document.querySelector('.country-list'),
+  countryInfo: document.querySelector('.country-info'),
+};
 
-    const  input = document.getElementById('search-box');
-    const  countryList = document.querySelector('.country-list');
-    const  countryInfo = document.querySelector('.country-info');
-
-
-input.addEventListener(
+refs.input.addEventListener(
   'input',
   debounce(handleInputSearchBoxValue, DEBOUNCE_DELAY)
 );
@@ -60,12 +60,12 @@ function createMarkupCountriesList({
 
 function appendMarkupCountry(countries) {
   const markup = countries.map(createMarkupCountry).join('');
-  countryInfo.innerHTML = markup;
+  refs.countryInfo.innerHTML = markup;
 }
 
 function appendMarkupCountriesList(countries) {
   const markup = countries.map(createMarkupCountriesList).join('');
-  countryList.innerHTML = markup;
+  refs.countryList.innerHTML = markup;
 }
 
 function getMarkupByQueryCondition(countries) {
@@ -85,8 +85,8 @@ function getMarkupByQueryCondition(countries) {
 }
 
 function cleanMarkup() {
-  countryList.innerHTML = '';
-  countryInfo.innerHTML = '';
+  refs.countryList.innerHTML = '';
+  refs.countryInfo.innerHTML = '';
 }
 
 function makeErrorMessage(err) {
