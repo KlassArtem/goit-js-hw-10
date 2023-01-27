@@ -1,4 +1,4 @@
-const BASE_URL = `https://restcountries.com/v3.1/all`;
+const BASE_URL = `https://restcountries.com/v3.1/`;
 const SEARCH_PARAMS = 'fields=name,capital,population,flags,languages';
 
 export function fetchCountries(name) {
