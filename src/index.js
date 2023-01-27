@@ -5,13 +5,13 @@ import './css/styles.css';
 
 const DEBOUNCE_DELAY = 300;
 
-const refs = {
-  input: document.getElementById('search-box'),
-  countryList: document.querySelector('.country-list'),
-  countryInfo: document.querySelector('.country-info'),
-};
 
-refs.input.addEventListener(
+const  input = document.getElementById('search-box');
+const  countryList = document.querySelector('.country-list');
+const  countryInfo = document.querySelector('.country-info');
+
+
+input.addEventListener(
   'input',
   debounce(handleInputSearchBoxValue, DEBOUNCE_DELAY)
 );
@@ -27,7 +27,7 @@ function handleInputSearchBoxValue(event) {
   fetchCountries(value).then(getMarkupByQueryCondition).catch(makeErrorMessage);
 }
 
-function createMarkupCountry({
+function createMarkUpCountry({
   flags: { svg },
   name: { official },
   capital,
@@ -59,13 +59,13 @@ function createMarkupCountriesList({
 }
 
 function appendMarkupCountry(countries) {
-  const markup = countries.map(createMarkupCountry).join('');
-  refs.countryInfo.innerHTML = markup;
+  const markup = countries.map(createMarkUpCountry).join('');
+  countryInfo.innerHTML = markup;
 }
 
 function appendMarkupCountriesList(countries) {
   const markup = countries.map(createMarkupCountriesList).join('');
-  refs.countryList.innerHTML = markup;
+  countryList.innerHTML = markup;
 }
 
 function getMarkupByQueryCondition(countries) {
@@ -85,8 +85,8 @@ function getMarkupByQueryCondition(countries) {
 }
 
 function cleanMarkup() {
-  refs.countryList.innerHTML = '';
-  refs.countryInfo.innerHTML = '';
+  countryList.innerHTML = '';
+  countryInfo.innerHTML = '';
 }
 
 function makeErrorMessage(err) {
