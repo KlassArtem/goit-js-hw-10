@@ -7,5 +7,5 @@ export function fetchCountries(name) {
       throw new Error('Oops, there is no country with that name');
     }
     return response.json();
-  });
+  }) ;
 }
